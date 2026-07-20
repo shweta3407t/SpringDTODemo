@@ -1,6 +1,8 @@
 package com.example.SpringDTODemo.entity ;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
 
 import javax.sql.rowset.spi.SyncResolver;
 import java.time.LocalDateTime;
@@ -14,11 +16,12 @@ public class Student {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private  Long id;
-
     private String name;
     private int rollNo;
     private  int age;
     private String subject;
+
+    @Email
     private String  email;
     private Boolean deleted ;
 

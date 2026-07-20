@@ -6,6 +6,7 @@ import com.example.SpringDTODemo.dto.UpdateStudentRequestDTO;
 import com.example.SpringDTODemo.dto.UpdateStudentResponseDTO;
 import com.example.SpringDTODemo.entity.Student;
 import com.example.SpringDTODemo.service.StudentService;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -23,7 +24,9 @@ public class StudentController {
     }
 
     @PostMapping("/create")
-    public ResponseEntity<CreateStudentResponseDTO> createStudent(@RequestBody CreateStudentRequestDTO student){
+    public ResponseEntity<CreateStudentResponseDTO> createStudent(
+            @Valid
+            @RequestBody CreateStudentRequestDTO student){
 
         CreateStudentResponseDTO createdStudent=studentService.createStudent(student);
 
@@ -56,8 +59,9 @@ public class StudentController {
 
     //update one student
     @PutMapping("/update/{id}")
-    public ResponseEntity<UpdateStudentResponseDTO> updateOneStudent(@PathVariable Long id,
-                                                    @RequestBody UpdateStudentRequestDTO studentResp){
+    public ResponseEntity<UpdateStudentResponseDTO> updateOneStudent(
+            @PathVariable Long id, @RequestBody UpdateStudentRequestDTO studentResp){
+
         UpdateStudentResponseDTO newStudent=studentService. update(id , studentResp);
 
         if(newStudent == null){
