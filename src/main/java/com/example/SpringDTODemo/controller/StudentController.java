@@ -1,5 +1,9 @@
 package com.example.SpringDTODemo.controller;
 
+import com.example.SpringDTODemo.dto.CreateStudentRequestDTO;
+import com.example.SpringDTODemo.dto.CreateStudentResponseDTO;
+import com.example.SpringDTODemo.dto.UpdateStudentRequestDTO;
+import com.example.SpringDTODemo.dto.UpdateStudentResponseDTO;
 import com.example.SpringDTODemo.entity.Student;
 import com.example.SpringDTODemo.service.StudentService;
 import org.springframework.http.HttpStatus;
@@ -12,15 +16,16 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/student")
 public class StudentController {
-    private StudentService studentService;
+    private  StudentService studentService;
 
     public StudentController(StudentService s){
         this.studentService=s;
     }
 
     @PostMapping("/create")
-    public ResponseEntity<Student> createStudent(@RequestBody Student student){
-        Student createdStudent=studentService.createStudent(student);
+    public ResponseEntity<CreateStudentResponseDTO> createStudent(@RequestBody CreateStudentRequestDTO student){
+
+        CreateStudentResponseDTO createdStudent=studentService.createStudent(student);
 
         return  ResponseEntity
                 .status(HttpStatus.CREATED)
@@ -51,9 +56,9 @@ public class StudentController {
 
     //update one student
     @PutMapping("/update/{id}")
-    public ResponseEntity<Student> updateOneStudent(@PathVariable Long id,
-                                                    @RequestBody Student studentResp){
-        Student newStudent=studentService. update(id , studentResp);
+    public ResponseEntity<UpdateStudentResponseDTO> updateOneStudent(@PathVariable Long id,
+                                                    @RequestBody UpdateStudentRequestDTO studentResp){
+        UpdateStudentResponseDTO newStudent=studentService. update(id , studentResp);
 
         if(newStudent == null){
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);

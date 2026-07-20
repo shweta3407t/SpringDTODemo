@@ -1,18 +1,9 @@
-package com.example.SpringDTODemo.entity ;
+package com.example.SpringDTODemo.dto;
 
-import jakarta.persistence.*;
-
-import javax.sql.rowset.spi.SyncResolver;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 
-@Entity
-@Table(name ="studenttt")
-public class Student {
+public class CreateStudentResponseDTO {
 
-    //primary key
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private  Long id;
 
     private String name;
@@ -20,9 +11,10 @@ public class Student {
     private  int age;
     private String subject;
     private String  email;
-    private Boolean deleted ;
+    private String message;
 
     private LocalDateTime createdAt;
+
     private LocalDateTime updatedAt;
 
     public LocalDateTime getCreatedAt() {
@@ -40,6 +32,7 @@ public class Student {
     public void setUpdatedAt(LocalDateTime updatedAt) {
         this.updatedAt = updatedAt;
     }
+
 
 
     public Long getId() {
@@ -62,8 +55,8 @@ public class Student {
         return rollNo;
     }
 
-    public void setRollNo(int roll) {
-        this.rollNo = roll;
+    public void setRollNo(int rollNo) {
+        this.rollNo = rollNo;
     }
 
     public int getAge() {
@@ -90,11 +83,11 @@ public class Student {
         this.email = email;
     }
 
-    public Boolean getDeleted() {
-        return deleted;
+    public String getMessage() {
+        return message;
     }
 
-    public void setDeleted(Boolean deleted) {
-        this.deleted = deleted;
+    public void setMessage(String message) {
+        this.message = message;
     }
 }
