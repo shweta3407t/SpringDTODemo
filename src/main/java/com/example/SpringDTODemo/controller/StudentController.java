@@ -8,6 +8,7 @@ import com.example.SpringDTODemo.dto.UpdateResponseDTO;
 import com.example.SpringDTODemo.entity.Student;
 import com.example.SpringDTODemo.service.StudentService;
 import jakarta.validation.Valid;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -28,7 +29,7 @@ public class StudentController {
     public ResponseEntity<CreateResponseDTO> createStudent(@Valid  @RequestBody CreateRequestDTO studentRequest){
         CreateResponseDTO studentResponse=studentService.createStudent(studentRequest);
 
-        return  ResponseEntity.ok().body(studentResponse);
+        return  ResponseEntity.status(HttpStatus.CREATED).body(studentResponse);
     }
 
 
@@ -80,7 +81,7 @@ public class StudentController {
     public  ResponseEntity< String> deleteAllStudent( ){
          studentService.deleteAllStudent( );
 
-        return  ResponseEntity.ok( " All student deleted permanently") ;
+        return  ResponseEntity. noContent().build();
     }
 
 
@@ -88,11 +89,11 @@ public class StudentController {
 
 
     //soft delete
-    @PatchMapping("/softDelete/id")
+    @PatchMapping("/softDelete/{id}")
     public  ResponseEntity< String> softDeleteOneStudent(@PathVariable Long id){
         Student student=studentService.softDeleteOneStudent(id);
 
-        return  ResponseEntity.ok(  "Soft deleted student with id" + student.getId()) ;
+        return  ResponseEntity.ok(  "Soft deleted student with id " + student.getId()) ;
     }
 
     @PatchMapping("/softDelete")

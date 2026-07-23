@@ -1,25 +1,25 @@
 package com.example.SpringDTODemo.dto;
 
 import java.time.LocalDateTime;
+import java.util.HashMap;
 import java.util.Map;
 
 public class ValidationExceptionResponseDTO {
-
     private LocalDateTime timeStamp;
-    private  int statusCode;
-    private  String error;
+    private  int StatusCode;
+    private String error;
     private  String message;
-    private String path;
+    private  String path;
+    private Map<String ,String> fieldsErrors ;
 
-    private Map<String ,String> fieldError;
 
-    public ValidationExceptionResponseDTO(LocalDateTime timeStamp, int statusCode, String error, String message, String path, Map<String, String> fieldError) {
+    public ValidationExceptionResponseDTO(LocalDateTime timeStamp, int statusCode, String error, String message, String path, Map<String, String> fieldsErrors) {
         this.timeStamp = timeStamp;
-        this.statusCode = statusCode;
+        StatusCode = statusCode;
         this.error = error;
         this.message = message;
         this.path = path;
-        this.fieldError = fieldError;
+        this.fieldsErrors = fieldsErrors;
     }
 
     public LocalDateTime getTimeStamp() {
@@ -31,11 +31,11 @@ public class ValidationExceptionResponseDTO {
     }
 
     public int getStatusCode() {
-        return statusCode;
+        return StatusCode;
     }
 
     public void setStatusCode(int statusCode) {
-        this.statusCode = statusCode;
+        StatusCode = statusCode;
     }
 
     public String getError() {
@@ -62,11 +62,11 @@ public class ValidationExceptionResponseDTO {
         this.path = path;
     }
 
-    public Map<String, String> getFieldError() {
-        return fieldError;
+    public Map<String, String> getFieldsErrors() {
+        return fieldsErrors;
     }
 
-    public void setFieldError(Map<String, String> fieldError) {
-        this.fieldError = fieldError;
+    public void setFieldsErrors(Map<String, String> fieldsErrors) {
+        this.fieldsErrors = fieldsErrors;
     }
 }

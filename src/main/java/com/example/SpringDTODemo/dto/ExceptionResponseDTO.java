@@ -3,16 +3,15 @@ package com.example.SpringDTODemo.dto;
 import java.time.LocalDateTime;
 
 public class ExceptionResponseDTO {
-
     private LocalDateTime timeStamp;
-    private  int statusCode;
-    private  String error;
+    private  int StatusCode;
+    private String error;
     private  String message;
-    private String path;
+    private  String path;
 
     public ExceptionResponseDTO(LocalDateTime timeStamp, int statusCode, String error, String message, String path) {
         this.timeStamp = timeStamp;
-        this.statusCode = statusCode;
+        StatusCode = statusCode;
         this.error = error;
         this.message = message;
         this.path = path;
@@ -27,11 +26,11 @@ public class ExceptionResponseDTO {
     }
 
     public int getStatusCode() {
-        return statusCode;
+        return StatusCode;
     }
 
     public void setStatusCode(int statusCode) {
-        this.statusCode = statusCode;
+        StatusCode = statusCode;
     }
 
     public String getError() {

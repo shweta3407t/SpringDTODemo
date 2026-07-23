@@ -1,21 +1,30 @@
 package com.example.SpringDTODemo.dto;
 
+import jakarta.validation.constraints.*;
+
+
 public class CreateRequestDTO {
 
-    private Long id;
+
+    @NotBlank(message = "name should not be null/empty or blank")
+    @Size(min =2 , max=50 , message = "Student name must be withine 2 - 50 character")
     private String name;
+
+    @NotNull(message = "age should not be null/empty or blank")
+    @Min(10) @Max(value = 50 ,message = "Age should be between 10 -50 years old")
     private Integer age;
-    private String email;
+
+    @NotBlank(message = "subject should not be null/empty or blank")
     private String subject;
+
+    @NotNull(message = "rollNumber should not be null/empty or blank")
     private Integer rollNo;
 
-    public Long getId() {
-        return id;
-    }
+    @NotBlank(message = "name should not be null/empty or blank")
+    @Email
+    private String email;
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+
 
     public String getName() {
         return name;

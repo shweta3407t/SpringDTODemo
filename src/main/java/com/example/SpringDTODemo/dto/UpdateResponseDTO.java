@@ -1,9 +1,14 @@
 package com.example.SpringDTODemo.dto;
 
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+
 import java.time.LocalDateTime;
 
 public class UpdateResponseDTO {
-     private String name;
+    private String name;
     private Integer age;
     private String email;
     private String subject;
@@ -11,7 +16,7 @@ public class UpdateResponseDTO {
 
     private  Boolean deleted;
 
-    private  LocalDateTime  updatedAt;
+    private LocalDateTime updatedAt;
 
     private  String message;
 
@@ -22,7 +27,6 @@ public class UpdateResponseDTO {
     public void setMessage(String message) {
         this.message = message;
     }
-
 
     public String getName() {
         return name;
@@ -79,4 +83,5 @@ public class UpdateResponseDTO {
     public void setUpdatedAt(LocalDateTime updatedAt) {
         this.updatedAt = updatedAt;
     }
+
 }

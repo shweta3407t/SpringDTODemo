@@ -1,10 +1,12 @@
 package com.example.SpringDTODemo.dto;
 
+import jakarta.validation.constraints.NotBlank;
+
 import java.time.LocalDateTime;
 
 public class CreateResponseDTO {
 
-
+     private Long id;
     private String name;
     private Integer age;
     private String email;
@@ -16,7 +18,13 @@ public class CreateResponseDTO {
     private LocalDateTime createdAt;
     private  LocalDateTime  updatedAt;
 
+    public Long getId() {
+        return id;
+    }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;

@@ -1,12 +1,26 @@
 package com.example.SpringDTODemo.dto;
 
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+
+import java.time.LocalDateTime;
+
 public class UpdateRequestDTO {
 
+    @NotBlank(message = "name should not be null/empty or blank")
+    private  String name;
 
-    private String name;
+    @NotNull(message = "age should not be null/empty or blank")
+    @Min(10) @Max(value = 50 ,message = "Age should be between 10 -50 years old")
     private Integer age;
-     private String subject;
-    private Integer rollNo;
+
+    @NotBlank(message = "subject should not be null/empty or blank")
+    private String subject;
+
+    @NotNull(message = "roll number should not be null/empty or blank")
+    private  Integer rollNo;
 
 
     public String getName() {
