@@ -121,6 +121,36 @@ public class StudentService {
 
 
 
+    //remove soft delete
+
+    public  Student removeSoftDeleteOneStudent(Long id){
+        Student student=studentRepository
+                .findByIdAndDeletedFalse(id)
+                .orElseThrow(() -> new RuntimeException("Student with id "+ id + " not exist."));
+
+        student.setDeleted(false);
+
+        studentRepository.save(student);
+
+        return student;
+    }
+
+    public  void removeSoftDeleteAllStudent(){
+        List<Student> list =studentRepository
+                .findByDeletedFalse();
+
+        for(Student s : list){
+            s.setDeleted(false);
+            studentRepository.save(s);
+        }
+
+    }
+
+
+
+
+
+
 
 
 
@@ -187,18 +217,19 @@ public class StudentService {
 
 
 
-    public  Student mapTOUpdateEntity(UpdateRequestDTO studentRequest){
-        Student student=new Student();
-
-        student.setName(studentRequest.getName());
-        student.setAge(studentRequest.getAge());
-        student.setSubject(studentRequest.getSubject());
-        student.setRollNo(studentRequest.getRollNo());
-
-        studentRepository.save(student);
-
-        return student;
-    }
+    ///no use
+//    public  Student mapTOUpdateEntity(UpdateRequestDTO studentRequest){
+//        Student student=new Student();
+//
+//        student.setName(studentRequest.getName());
+//        student.setAge(studentRequest.getAge());
+//        student.setSubject(studentRequest.getSubject());
+//        student.setRollNo(studentRequest.getRollNo());
+//
+//        studentRepository.save(student);
+//
+//        return student;
+//    }
 
     public UpdateResponseDTO mapToUpdateDTO(Student student){
         UpdateResponseDTO studentResponse=new UpdateResponseDTO();

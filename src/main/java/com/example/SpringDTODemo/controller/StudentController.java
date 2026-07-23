@@ -100,7 +100,26 @@ public class StudentController {
     public  ResponseEntity< String> softDeleteAllStudent(){
         studentService.softDeleteAllStudent( );
 
-        return  ResponseEntity.ok(  "Soft deleted all student  ") ;
+        return  ResponseEntity.ok(  "Soft deleted all student . ") ;
+    }
+
+
+
+
+
+    //remove soft delete
+    @PatchMapping("/removeSoftDelete/{id}")
+    public  ResponseEntity<String> removeSoftDeleteOneStudent(@PathVariable Long id){
+        Student student=studentService.removeSoftDeleteOneStudent(id);
+
+        return  ResponseEntity.ok(  " Remove soft deleted student with id " + student.getId()) ;
+    }
+
+    @PatchMapping("/removeSoftDelete")
+    public  ResponseEntity< String> removeSoftDeleteAllStudent(){
+        studentService.removeSoftDeleteAllStudent( );
+
+        return  ResponseEntity.ok(  "Remove soft deleted from all student . ") ;
     }
 
 
