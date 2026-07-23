@@ -1,19 +1,9 @@
-package com.example.SpringDTODemo.entity;
-
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+package com.example.SpringDTODemo.dto;
 
 import java.time.LocalDateTime;
 
-@Entity
-public class Student {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    private String name;
+public class UpdateResponseDTO {
+     private String name;
     private Integer age;
     private String email;
     private String subject;
@@ -21,16 +11,18 @@ public class Student {
 
     private  Boolean deleted;
 
-    private LocalDateTime createdAt;
     private  LocalDateTime  updatedAt;
 
-    public Long getId() {
-        return id;
+    private  String message;
+
+    public String getMessage() {
+        return message;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setMessage(String message) {
+        this.message = message;
     }
+
 
     public String getName() {
         return name;
@@ -80,14 +72,6 @@ public class Student {
         this.deleted = deleted;
     }
 
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(LocalDateTime createdAt) {
-        this.createdAt = createdAt;
-    }
-
     public LocalDateTime getUpdatedAt() {
         return updatedAt;
     }
@@ -95,5 +79,4 @@ public class Student {
     public void setUpdatedAt(LocalDateTime updatedAt) {
         this.updatedAt = updatedAt;
     }
-
 }

@@ -1,27 +1,16 @@
 package com.example.SpringDTODemo.repository;
 
+
+import com.example.SpringDTODemo.dto.CreateResponseDTO;
 import com.example.SpringDTODemo.entity.Student;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Repository;
 
 import java.util.List;
-import java.util.Optional;
 
-@Repository
-public interface StudentRepository  extends JpaRepository<Student,Long>  {
+public interface  StudentRepository  extends JpaRepository<Student , Long> {
 
-    Optional<Student> findByIdAndDeletedFalse(Long id);
+    Student  findByIdAndDeletedFalse(Long id);
 
-    List<Student> findByDeletedFalse();
+    List<Student>  findByDeletedFalse();
 
-
-    Boolean existsByEmail(String email);
 }
-
-
-
-
-
-
-
